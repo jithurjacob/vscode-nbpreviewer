@@ -1,0 +1,70 @@
+{
+  "name": "nbpreviewer",
+  "displayName": "VS Code nbpreviewer",
+  "description": "Extension for previewing Jupyter Notebooks",
+  "version": "0.0.1",
+  "publisher": "jithurjacob",
+  "engines": {
+    "vscode": "^1.17.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:ipython",
+    "onCommand:ipython.showPreview"
+  ],
+  "main": "./extension",
+  "contributes": {
+    "languages": [
+      {
+        "id": "ipython",
+        "aliases": [
+          "IPython",
+          "ipython"
+        ],
+        "extensions": [
+          ".ipynb"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.showPreview",
+        "title": "Show preview"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "extension.showPreview",
+          "when": "resourceLangId == ipython",
+          "group": "navigation"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "extension.showPreview",
+          "when": "resourceLangId == ipython",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6",
+    "eslint": "^4.6.1",
+    "@types/node": "^7.0.43",
+    "@types/mocha": "^2.2.42"
+  },
+  "dependencies": {
+    "jsdom": "^11.5.1",
+    "notebookjs": "^0.2.6"
+  }
+}
