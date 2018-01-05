@@ -65,6 +65,8 @@
   },
   "dependencies": {
     "jsdom": "^11.5.1",
-    "notebookjs": "^0.2.6"
+    "node-prismjs": "^0.1.1",
+    "notebookjs": "^0.2.6",
+    "prismjs": "^1.9.0"
   }
 }

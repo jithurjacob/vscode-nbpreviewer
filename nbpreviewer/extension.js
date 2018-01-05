@@ -3,9 +3,17 @@
 const vscode = require('vscode');
 const fs = require("fs");
 const nb = require("notebookjs");
+const Prism = require('node-prismjs');
+const nb_style = 'body{background-color:#fff}.nb-html-output{background-color:#333}.nb-stderr {   background-color: #FAA;}.nb-raw-cell{background-color: #f5f2f0;}.nb-output table,.nb-output td,.nb-output th{border:1px solid #000;border-collapse:collapse}.nb-notebook{line-height:1.5}.nb-stderr,.nb-stdout{white-space:pre-wrap;margin:1em 0;padding:.1em .5em}.nb-stderr{background-color:#FAA}.nb-cell+.nb-cell{margin-top:.5em}.nb-output th{font-weight:700}.nb-output td,.nb-output th{padding:.25em;text-align:left;vertical-align:middle}.nb-cell{position:relative}.nb-raw-cell{white-space:pre-wrap;background-color:#f5f2f0;font-family:Consolas,Monaco,"Andale Mono",monospace;padding:1em;margin:.5em 0}.nb-output{min-height:1em;width:100%;overflow-x:scroll;border-right:1px dotted #CCC}.nb-output img{max-width:100%}.nb-input:before,.nb-output:before{position:absolute;font-family:monospace;color:#999;left:-7.5em;width:7em;text-align:right}.nb-input:before{content:"In [" attr(data-prompt-number) "]:"}.nb-output:before{content:"Out [" attr(data-prompt-number) "]:"}// Fix pandas dataframe formatting div[style="max-height:1000px;max-width:1500px;overflow:auto;"]{max-height:none!important}';
+//require('prismjs/components/python')
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
+     // Use the console to output diagnostic information (console.log) and errors (console.error)
+    // This line of code will only be executed once when your extension is activated
+    console.log('Congratulations, your extension "nbpreviewer" is now active!');
+
+
     // create the document content provider
     var previewUri = vscode.Uri.parse('nb-preview://authority/nb-preview');
     var TextDocumentContentProvider = /** @class */ (function () {
@@ -28,7 +36,7 @@ function activate(context) {
             TextDocumentContentProvider.prototype.createIPythonDocument = function () {
                 var editor = vscode.window.activeTextEditor;
                 if (!(editor.document.languageId === 'ipython')) {
-                    return this.errorSnippet("Active editor doesn't show a IPython notebook - cannot preview.");
+                    return this.errorMessage("Active editor doesn't show a IPython notebook - cannot preview.");
                 }
                 return this.extractIPythonBody();
             };
@@ -37,18 +45,18 @@ function activate(context) {
                 return this.convertToHTML(editor.document);
                 
             };
-            TextDocumentContentProvider.prototype.errorSnippet = function (error) {
+            TextDocumentContentProvider.prototype.errorMessage = function (error) {
                 return "<body>" + error + "</body>";
             };
-            TextDocumentContentProvider.prototype.snippet = function (document) {
+            TextDocumentContentProvider.prototype.convertToHTML = function (document) {
                 var data = "";
                 try{
                     var text = document.getText();
                     var ipynb = JSON.parse(text);
                     var notebook = nb.parse(ipynb);
-                    data = "<body>"+notebook.render().outerHTML+"</body>";
+                    data = "<style>"+nb_style+ "</style><body>"+notebook.render().outerHTML+"</body>";
                 }catch(error){
-                    data = this.errorSnippet(error);
+                    data = this.errorMessage(error);
                     console.error("An error occured while converting Notebook to HTML",error);
                 }
                 return data;
@@ -68,49 +76,19 @@ function activate(context) {
             }
         });
 
-
-
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
-    console.log('Congratulations, your extension "nbpreviewer" is now active!');
-
+   
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerCommand('extension.showPreview', function (obj) {
         // The code you place here will be executed every time your command is executed
-        var filePath = obj['fsPath'];
-        var previewPath = filePath+".preview"
-        // Display a message box to the user
-        vscode.window.showInformationMessage('gonna show' + filePath);
-        console.log("starting to read file");
-        try {
-
-
-            var ipynb = JSON.parse(fs.readFileSync(filePath));
-            var notebook = nb.parse(ipynb);
-            var data = '<html><head lang="en">\
-            <base href="">\
-            <title>My Prototype</title>\
-            <meta name="viewport" content="width=device-width, initial-scale=1">\
-        </head><body>' + notebook.render().outerHTML + "</body></html>";
-            try {
-                fs.writeFileSync(previewPath, data);                
-            } catch (e) {
-                console.error("Cannot write file ", e);
-            }
-            
-            let success = vscode.commands.executeCommand('vscode.previewHtml', previewPath, vscode.ViewColumn.Two);
-                // console.log(data);  
-                console.log("done");
-
-        } catch (error) {
-            console.error(error);
-        }
-        console.log("done2");
+        return vscode.commands.executeCommand('vscode.previewHtml', previewUri, vscode.ViewColumn.Two, 'IPython Notebook Preview').then(function (success) {
+        }, function (reason) {
+            vscode.window.showErrorMessage(reason);
+        });
     });
 
-    context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable, registration);
 }
 exports.activate = activate;
 
