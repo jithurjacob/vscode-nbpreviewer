@@ -65,24 +65,30 @@ function activate(context) {
         }());
         var provider = new TextDocumentContentProvider();
         var registration = vscode.workspace.registerTextDocumentContentProvider('nb-preview', provider);
-        vscode.workspace.onDidChangeTextDocument(function (e) {
-            if (e.document === vscode.window.activeTextEditor.document) {
-                provider.update(previewUri);
-            }
-        });
-        vscode.window.onDidChangeTextEditorSelection(function (e) {
-            if (e.textEditor === vscode.window.activeTextEditor) {
-                provider.update(previewUri);
-            }
-        });
+
+        
+        // vscode.workspace.onDidChangeTextDocument(function (e) {
+        //     if (e.document === vscode.window.activeTextEditor.document) {
+        //         provider.update(previewUri);
+        //     }
+        // });
+        // vscode.window.onDidChangeTextEditorSelection(function (e) {
+        //     if (e.textEditor === vscode.window.activeTextEditor) {
+        //         provider.update(previewUri);
+        //     }
+        // });
 
    
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerCommand('extension.showPreview', function (obj) {
+        
+        console.log("showing preview for",previewUri);
+        provider.update(previewUri);
         // The code you place here will be executed every time your command is executed
         return vscode.commands.executeCommand('vscode.previewHtml', previewUri, vscode.ViewColumn.Two, 'IPython Notebook Preview').then(function (success) {
+            console.log("successfully showed notebook");
         }, function (reason) {
             vscode.window.showErrorMessage(reason);
         });
