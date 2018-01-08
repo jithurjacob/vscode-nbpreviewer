@@ -10,6 +10,14 @@
   "keywords": [
     "python","jupyter","ipython","data science","kaggle","notebook", "markdown"
   ],
+  "icon": "images/jupyter.png",
+  "recommendations": [
+    "donjayamanne.python"
+  ],
+  "galleryBanner": {
+    "color": "#e46d2e",
+    "theme": "dark"
+  },
   "qna":false,
   "license": "MIT",
   "bugs": {
