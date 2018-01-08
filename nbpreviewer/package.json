@@ -36,13 +36,6 @@
       }
     ],
     "menus": {
-      "editor/title": [
-        {
-          "command": "extension.showPreview",
-          "when": "resourceLangId == ipython",
-          "group": "navigation"
-        }
-      ],
       "explorer/context": [
         {
           "command": "extension.showPreview",
