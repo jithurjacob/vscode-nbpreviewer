@@ -1,9 +1,26 @@
 {
   "name": "nbpreviewer",
-  "displayName": "VS Code nbpreviewer",
-  "description": "Extension for previewing Jupyter Notebooks",
+  "displayName": "VS Code Jupyter Notebook Previewer",
+  "description": "An easy to use extension for previewing Jupyter Notebooks within VS Code",
   "version": "0.0.1",
   "publisher": "jithurjacob",
+  "author": {
+    "name": "jithurjacob"
+},
+  "keywords": [
+    "python","jupyter","ipython","datascience","kaggle","notebook", "markdown"
+  ],
+  "qna":false,
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jithurjacob/vscode-nbpreviewer/issues",
+    "email": "jithurjacob@gmail.com"
+},
+"repository": {
+    "type": "git",
+    "url": "https://github.com/jithurjacob/vscode-nbpreviewer.git"
+},
+"homepage": "https://github.com/jithurjacob/vscode-nbpreviewer/blob/master/README.md",
   "engines": {
     "vscode": "^1.17.0"
   },
@@ -61,7 +78,7 @@
     "file-url": "^2.0.2",
     "jsdom": "^11.5.1",
     "node-prismjs": "^0.1.1",
-    "notebookjs": "^0.2.7",
+    "notebookjs": "^0.2.6",
     "prismjs": "^1.9.0"
   }
 }
