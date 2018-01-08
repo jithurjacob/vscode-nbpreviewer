@@ -14,7 +14,7 @@
     "onLanguage:ipython",
     "onCommand:ipython.showPreview"
   ],
-  "main": "./extension",
+  "main": "./src/extension",
   "contributes": {
     "languages": [
       {
@@ -58,6 +58,7 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "file-url": "^2.0.2",
     "jsdom": "^11.5.1",
     "node-prismjs": "^0.1.1",
     "notebookjs": "^0.2.6",
