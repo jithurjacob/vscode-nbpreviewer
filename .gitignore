@@ -1,7 +1,7 @@
 node_modules
 .vscode-test/
-.vsix
-
+*.vsix
+*.mp4
 # Logs
 logs
 *.log
