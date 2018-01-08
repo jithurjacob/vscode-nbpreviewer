@@ -2,13 +2,13 @@
   "name": "nbpreviewer",
   "displayName": "VS Code Jupyter Notebook Previewer",
   "description": "An easy to use extension for previewing Jupyter Notebooks within VS Code",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "publisher": "jithurjacob",
   "author": {
     "name": "jithurjacob"
 },
   "keywords": [
-    "python","jupyter","ipython","datascience","kaggle","notebook", "markdown"
+    "python","jupyter","ipython","data science","kaggle","notebook", "markdown"
   ],
   "qna":false,
   "license": "MIT",
