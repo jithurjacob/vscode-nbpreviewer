@@ -1,92 +1,17 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "notebookjs",
-        "scope": null,
-        "escapedName": "notebookjs",
-        "name": "notebookjs",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
-      },
-      "D:\\Jithu\\D Drive\\Jithu\\Personal\\ghub\\vscode-nbpreviewer\\nbpreviewer"
-    ]
-  ],
-  "_from": "notebookjs@latest",
-  "_id": "notebookjs@0.2.6",
-  "_inCache": true,
-  "_location": "/notebookjs",
-  "_nodeVersion": "0.12.0",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/notebookjs-0.2.6.tgz_1477396895052_0.9406832377426326"
-  },
-  "_npmUser": {
-    "name": "jsvine",
-    "email": "jsvine@gmail.com"
-  },
-  "_npmVersion": "2.5.1",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "notebookjs",
-    "scope": null,
-    "escapedName": "notebookjs",
-    "name": "notebookjs",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "http://registry.npmjs.org/notebookjs/-/notebookjs-0.2.6.tgz",
-  "_shasum": "c499675ac7af7bb9f987c6dfd3b24efc8db7701f",
-  "_shrinkwrap": null,
-  "_spec": "notebookjs",
-  "_where": "D:\\Jithu\\D Drive\\Jithu\\Personal\\ghub\\vscode-nbpreviewer\\nbpreviewer",
-  "author": {
-    "name": "Jeremy Singer-Vine",
-    "email": "jsvine@gmail.com"
-  },
-  "bugs": {
-    "url": "https://github.com/jsvine/notebookjs/issues"
-  },
-  "contributors": [],
-  "dependencies": {
-    "ansi_up": ">=1.1.3",
-    "jsdom": ">=4.0.0",
-    "marked": ">=0.3.3"
-  },
-  "description": "Parse and render IPython/Jupyter notebooks.",
-  "devDependencies": {},
-  "directories": {},
-  "dist": {
-    "shasum": "c499675ac7af7bb9f987c6dfd3b24efc8db7701f",
-    "tarball": "https://registry.npmjs.org/notebookjs/-/notebookjs-0.2.6.tgz"
-  },
-  "gitHead": "030f101fb07e63d5b2c626733f5bd25fb24b3999",
-  "homepage": "https://github.com/jsvine/notebookjs",
-  "keywords": [
-    "ipython",
-    "jupyter"
-  ],
-  "license": "MIT",
-  "main": "notebook.js",
-  "maintainers": [
-    {
-      "name": "jsvine",
-      "email": "jsvine@gmail.com"
-    }
-  ],
-  "name": "notebookjs",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/jsvine/notebookjs.git"
-  },
-  "scripts": {},
-  "version": "0.2.6"
+    "name" : "notebookjs",
+    "version" : "0.2.7",
+    "description" : "Parse and render IPython/Jupyter notebooks.",
+    "main" : "notebook.js",
+    "homepage" : "https://github.com/jsvine/notebookjs",
+    "keywords" : [ "ipython", "jupyter" ],
+    "author" : "Jeremy Singer-Vine <jsvine@gmail.com>",
+    "contributors" : [],
+    "license": "MIT",
+    "dependencies" : {
+        "jsdom": ">=4.0.0",
+        "marked": ">=0.3.3",
+        "ansi_up": ">=1.1.3"
+    },
+    "repository" : {"type": "git", "url": "git://github.com/jsvine/notebookjs.git"}
 }

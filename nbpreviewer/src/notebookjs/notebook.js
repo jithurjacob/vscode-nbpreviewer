@@ -1,10 +1,11 @@
-// notebook.js 0.2.6
+// notebook.js 0.2.7
 // http://github.com/jsvine/notebookjs
 // notebook.js may be freely distributed under the MIT license.
 (function () {
     var root = this;
-    var VERSION = "0.2.5";
-    // Get browser or JSDOM document
+    var VERSION = "0.2.7";
+
+          // Get browser or JSDOM document
     // var doc = root.document || require("jsdom").jsdom();
     
     // https://github.com/jsvine/notebookjs/issues/13
@@ -15,8 +16,6 @@
     const { document } = (new JSDOM('')).window;
     var doc = root.document || document;
   
-
-
     // Helper functions
     var ident = function (x) { return x; };
 
@@ -138,7 +137,7 @@
 
     nb.display.javascript = function (js) {
         var el = makeElement("script");
-        script.innerHTML = js;
+        el.innerHTML = joinText(js);
         return el;
     };
     nb.display["application/javascript"] = nb.display.javascript;
