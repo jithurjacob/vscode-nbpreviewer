@@ -36,7 +36,7 @@
       }
     ],
     "menus": {
-      "explorer/context": [
+      "editor/title": [
         {
           "command": "extension.showPreview",
           "when": "resourceLangId == ipython",
