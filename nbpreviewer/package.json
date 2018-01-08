@@ -57,6 +57,7 @@
     "@types/mocha": "^2.2.42"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "jsdom": "^11.5.1",
     "node-prismjs": "^0.1.1",
     "notebookjs": "^0.2.6",
