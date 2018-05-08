@@ -82,7 +82,11 @@
         var code_el = makeElement("code");
         var notebook = cell.worksheet.notebook;
         var m = notebook.metadata;
-        var lang = this.cell.raw.language || m.language || m.language_info.name;
+        if(m.language_info !== undefined && this.cell.raw.language !== undefined )//source of error #3 :
+            var lang = this.cell.raw.language || m.language || m.language_info.name || undefined;
+        else
+            lang = "none"; //or set another default
+
         code_el.setAttribute("data-language", lang);
         code_el.className = "lang-" + lang;
         code_el.innerHTML = escapeHTML(joinText(this.raw));

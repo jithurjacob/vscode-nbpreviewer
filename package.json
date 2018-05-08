@@ -6,9 +6,15 @@
   "publisher": "jithurjacob",
   "author": {
     "name": "jithurjacob"
-},
+  },
   "keywords": [
-    "python","jupyter","ipython","data science","kaggle","notebook", "markdown"
+    "python",
+    "jupyter",
+    "ipython",
+    "data science",
+    "kaggle",
+    "notebook",
+    "markdown"
   ],
   "icon": "images/jupyter.png",
   "recommendations": [
@@ -18,17 +24,17 @@
     "color": "#e46d2e",
     "theme": "dark"
   },
-  "qna":false,
+  "qna": false,
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jithurjacob/vscode-nbpreviewer/issues",
     "email": "jithurjacob@gmail.com"
-},
-"repository": {
+  },
+  "repository": {
     "type": "git",
     "url": "https://github.com/jithurjacob/vscode-nbpreviewer.git"
-},
-"homepage": "https://github.com/jithurjacob/vscode-nbpreviewer/blob/master/README.md",
+  },
+  "homepage": "https://github.com/jithurjacob/vscode-nbpreviewer/blob/master/README.md",
   "engines": {
     "vscode": "^1.17.0"
   },
