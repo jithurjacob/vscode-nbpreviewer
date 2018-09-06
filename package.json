@@ -57,7 +57,8 @@
     "commands": [
       {
         "command": "extension.showPreview",
-        "title": "Show preview"
+        "title": "Show preview",
+        "category": "Jupyter",
       }
     ],
     "menus": {
