@@ -82,7 +82,10 @@
         var code_el = makeElement("code");
         var notebook = cell.worksheet.notebook;
         var m = notebook.metadata;
-        var lang = this.cell.raw.language || m.language || m.language_info.name;
+        var lang = "none";
+        if (m.language_info !== undefined && this.cell.raw.language !== undefined ) {
+            lang = this.cell.raw.language || m.language || m.language_info.name || undefined;
+        }
         code_el.setAttribute("data-language", lang);
         code_el.className = "lang-" + lang;
         code_el.innerHTML = escapeHTML(joinText(this.raw));
