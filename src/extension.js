@@ -33,23 +33,23 @@ function convertDocToHTML(panel) {
     }
 
     let doc = editor.document;
-
+    
     // Only update status if a Markdown file
-    if (!(doc.languageId === 'ipython')) {
-        vscode.window.errorMessage("Active editor doesn't show a IPython notebook - cannot preview.");
+    if (!(doc.languageId === 'jupyter')) {
+        vscode.window.errorMessage("Active editor doesn't show a Jupyter notebook - cannot preview.");
         statusBarItem.hide();
-        return "Active editor doesn't show a IPython notebook - cannot preview.";
+        return "Active editor doesn't show a Jupyter notebook - cannot preview.";
     }
     var data = "";
     try {
-        statusBarItem.text = "2/6 Extracting IPython Notebook";
+        statusBarItem.text = "2/6 Extracting Jupyter Notebook";
         var text = doc.getText();
         var ipynb = JSON.parse(text);
-        statusBarItem.text = "3/6 Parsing IPython Notebook";
+        statusBarItem.text = "3/6 Parsing Jupyter Notebook";
         var notebook = nb.parse(ipynb);
-        statusBarItem.text = "4/6 Rendering IPython Notebook";
+        statusBarItem.text = "4/6 Rendering Jupyter Notebook";
         var notebook_html = notebook.render().outerHTML;
-        statusBarItem.text = "5/6 Highlighting IPython Notebook";
+        statusBarItem.text = "5/6 Highlighting Jupyter Notebook";
         //traverse through notebook and use prism to highlight
         const $ = cheerio.load(notebook_html);
         var elems = $('.nb-input pre code');
@@ -96,16 +96,16 @@ function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "nbpreviewer" is now active!');
-
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.showPreview', async function (obj) {
+    let disposable = vscode.commands.registerCommand('jupyter.showPreview', async function (obj) {
         // The code you place here will be executed every time your command is executed
         try {
+            
             // const success = await vscode.commands.executeCommand('vscode.previewHtml', previewUri, vscode.ViewColumn.Two, 'IPython Notebook Preview');
             // Create and show panel
-            const panel = vscode.window.createWebviewPanel('nbpreviewer', "Jupyter Notebook Previewer", vscode.ViewColumn.One, { enableScripts: true });
+            const panel = vscode.window.createWebviewPanel('nbpreviewer', "Jupyter Notebook Previewer", vscode.ViewColumn.One, { enableScripts: true,retainContextWhenHidden: true });
             panel.webview.html = generateProgressMessage("Starting to render Jupyter Notebook");
             // And set its HTML content
             panel.webview.html = generatePreview(panel);
