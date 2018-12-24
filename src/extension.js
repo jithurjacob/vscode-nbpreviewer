@@ -14,6 +14,9 @@ const notebook_style_src = notebook_style_path.with({ scheme: 'vscode-resource' 
 const prism_style_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'prism.css'));
 const prism_style_src = prism_style_path.with({ scheme: 'vscode-resource' });
 
+const custom_style_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'custom.css'));
+const custom_style_src = custom_style_path.with({ scheme: 'vscode-resource' });
+
 const require_script_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'require.js'));
 const require_script_src = require_script_path.with({ scheme: 'vscode-resource' });
 
@@ -60,6 +63,7 @@ function convertDocToHTML(panel) {
         notebook_html = $.html();
         data = '<link  href="' + notebook_style_src + '"  rel="stylesheet" />';
         data += '<link href="' + prism_style_src + '"  rel="stylesheet" />';
+        data += '<link href="' + custom_style_src + '"  rel="stylesheet" />';
         data += '<script src="' + require_script_src + '" ></script>';
         data += "<body>" + notebook_html + "</body>";
     } catch (error) {
