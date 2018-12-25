@@ -9,3 +9,11 @@ body.vscode-dark .nb-input:before, body.vscode-dark .nb-output:before{
 body.vscode-dark .nb-output{
     background: #dadada;
 }
+
+body.vscode-dark .nb-markdown-cell{
+    color: #ccc;
+}
+
+body.vscode-dark table{
+    background: #ccc!important;
+}
