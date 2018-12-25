@@ -2,7 +2,7 @@
   "name": "nbpreviewer",
   "displayName": "VS Code Jupyter Notebook Previewer",
   "description": "An easy to use extension for previewing Jupyter Notebooks within VS Code",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "publisher": "jithurjacob",
   "author": {
     "name": "jithurjacob"
