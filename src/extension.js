@@ -14,11 +14,25 @@ const notebook_style_src = notebook_style_path.with({ scheme: 'vscode-resource' 
 const prism_style_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'prism.css'));
 const prism_style_src = prism_style_path.with({ scheme: 'vscode-resource' });
 
+const katex_style_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'katex.min.css'));
+const katex_style_src = katex_style_path.with({ scheme: 'vscode-resource' });
+
+
 const custom_style_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'custom.css'));
 const custom_style_src = custom_style_path.with({ scheme: 'vscode-resource' });
 
 const require_script_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'require.js'));
 const require_script_src = require_script_path.with({ scheme: 'vscode-resource' });
+
+const katex_script_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'katex.min.js'));
+const katex_script_src = katex_script_path.with({ scheme: 'vscode-resource' });
+
+
+const katex_auto_script_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'auto-render.min.js'));
+const katex_auto_script_src = katex_auto_script_path.with({ scheme: 'vscode-resource' });
+
+const custom_script_path = vscode.Uri.file(path.join(__dirname, '..', "static", 'custom.js'));
+const custom_script_src = custom_script_path.with({ scheme: 'vscode-resource' });
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -63,9 +77,17 @@ function convertDocToHTML(panel) {
         notebook_html = $.html();
         data = '<link  href="' + notebook_style_src + '"  rel="stylesheet" />';
         data += '<link href="' + prism_style_src + '"  rel="stylesheet" />';
+        data += '<link href="' + katex_style_src + '"  rel="stylesheet" />';
         data += '<link href="' + custom_style_src + '"  rel="stylesheet" />';
-        data += '<script src="' + require_script_src + '" ></script>';
+
+        // data += '<script src="' + require_script_src + '" ></script>';
+        data += '<script src="' + katex_script_src + '" ></script>';
+        data += '<script src="' + katex_auto_script_src + '" ></script>';
+        
         data += "<body>" + notebook_html + "</body>";
+        data += '<script src="' + custom_script_src + '" ></script>';
+        
+
     } catch (error) {
         data = "An error occured while converting Notebook to HTML";
         vscode.window.showErrorMessage("An error occured while converting Notebook to HTML");
